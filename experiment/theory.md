@@ -466,7 +466,7 @@ The pin diagram of 7404 NOT gate IC is shown in fig 5.
 **Fig.-5: Pin diagram of IC 7404**
 </center>
   
-### **Application Of Full Subtractor**
+### Application Of Full Subtractor
 
 1) These are generally employed in ALU (Arithmetic logic unit) in computers to subtract and in CPU and GPU for the applications of graphics to decrease the circuit difficulty.  
 2) Subtractors are mostly used for performing arithmetical functions likesubtraction, in electronic calculators as well as digital devices.  

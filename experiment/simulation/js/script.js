@@ -32,10 +32,29 @@ btn_close.addEventListener('click', () => {
 var left = document.getElementById("Second_Data"); 
 left.style.display ="block";
 
+
+const check1_button = document.getElementById('check1');
+const reset1_button = document.getElementById('reset1');
+
+const check_button = document.getElementById('checkbutton');
+
+
+const bread_but=document.getElementById("breadbutton");
+const supply_but=document.getElementById("supplybutton");
+const switch_but=document.getElementById("switchbutton");
+const led_but=document.getElementById("ledbutton");
+const ic1_but=document.getElementById("ic1button");
+const ic2_but=document.getElementById("ic2button");
+
+
+
 // Components hide show code here
 function breadboard() {
     var x = document.getElementById("board");
     x.style.visibility = "visible";
+
+    bread_but.disabled=true;
+    bread_but.style.cursor="not-allowed";
 
     var instance = new BoardController();
 
@@ -262,11 +281,15 @@ function breadboard() {
 
  
     }
+    disabledButton();
 }
 
 function inputs() {
     var x = document.getElementById("inputs");
     x.style.visibility = "visible";
+
+    switch_but.disabled=true;
+    switch_but.style.cursor="not-allowed";
 
     var inputs = new BoardController();
     inputs.setJsPlumbInstance(jsPlumb);
@@ -276,6 +299,7 @@ function inputs() {
     inputs.addEndPoint('blue',5,1, 'inputs', 'input_A', 'input_A1', [0, 0, 0, 0, 619, -100], 'blue');
     inputs.addEndPoint('blue',5,1, 'inputs', 'input_B', 'input_B1', [0, 0, 0, 0, 719, -100], 'blue');
     inputs.addEndPoint('blue',5,5, 'inputs', 'input_C', 'input_B2', [0, 0, 0, 0, 819, -100], 'blue');
+    disabledButton();
 }
 
 function ic74513() {
@@ -283,6 +307,9 @@ function ic74513() {
     x.style.visibility = "visible";
     var y =document.getElementById("ic74513img");
     y.style.visibility = "visible";
+
+    ic1_but.disabled=true;
+    ic1_but.style.cursor="not-allowed";
 
     var ic74513 = new BoardController();
     ic74513.setJsPlumbInstance(jsPlumb);
@@ -369,6 +396,8 @@ function ic74513() {
         ic74513.addEndPoint('green',4.2,1, 'ic74513', 'ic74513_8', 'ic74513_803', [0, 0, 1, -1, 270, 212], 'red');
         ic74513.addEndPoint('green',4.2,1, 'ic74513', 'ic74513_8', 'ic74513_804', [0, 0, 1, -1, 270, 225], 'red');
     }
+
+    disabledButton();
 }
 
 
@@ -377,6 +406,10 @@ function ic7404() {
     x.style.visibility = "visible";
     var y = document.getElementById("ic7404img");
     y.style.visibility = "visible";
+
+    ic2_but.disabled=true;
+    ic2_but.style.cursor="not-allowed";
+
     var ic7404 = new BoardController();
     ic7404.setJsPlumbInstance(jsPlumb);
     ic7404.setCircuitContainer('mid');
@@ -452,11 +485,17 @@ function ic7404() {
         ic7404.addEndPoint('blue',4.2,1, 'ic7404', 'ic7404_GND', 'ic7404_GND04', [0, 0, 1, -1, 89, 137], 'red');
         ic7404.addEndPoint('blue',4.2,1, 'ic7404', 'ic7404_GND', 'ic7404_GND05', [0, 0, 1, -1, 89, 151], 'red');
     }
+
+    disabledButton();
 }
 
 function led1() {
     var x = document.getElementById("led");
     x.style.visibility = "visible";
+
+
+    led_but.disabled=true;
+    led_but.style.cursor="not-allowed";
 
     var led = new BoardController();
     led.setJsPlumbInstance(jsPlumb);
@@ -472,12 +511,17 @@ function led1() {
     led.addEndPoint('blue',4.2,1, 'led', 'led_A', 'led_A04', [0, 0, 1, -1, 52, 124], 'red');
     led.addEndPoint('blue',4.2,1, 'led', 'led_A', 'led_A05', [0, 0, 1, -1, 52, 137.5], 'red');
 
+    disabledButton();
+
 }
 
 function supply() {
     var x = document.getElementById("supply");
     x.style.visibility = "visible";
     
+    supply_but.disabled=true;
+    supply_but.style.cursor="not-allowed";
+
     var supply = new BoardController();
     supply.setJsPlumbInstance(jsPlumb);
     supply.setCircuitContainer('mid');
@@ -485,6 +529,8 @@ function supply() {
 
     supply.addEndPoint('red',9,1, 'supply', 'VCC', 'VCC', [0, 0, 0,0, 58, 62], 'blue');
     supply.addEndPoint('black',9,1, 'supply', 'GND', 'GND', [0, 0, 0, 0, 114, 62], 'red');
+
+    disabledButton();
 }
 function led2() {
     var x = document.getElementById("led1");
@@ -492,6 +538,9 @@ function led2() {
     var led = new BoardController();
     led.setJsPlumbInstance(jsPlumb);
  
+    led_but.disabled=true;
+    led_but.style.cursor="not-allowed";
+
     led.addEndPoint('blue',4.2,1, 'led1', 'led_C1', 'led_C102', [0, 0, 1, -1, 62.5, 97], 'red');
     led.addEndPoint('blue',4.2,1, 'led1', 'led_C1', 'led_C103', [0, 0, 1, -1, 62.5, 110.5], 'red');
     led.addEndPoint('blue',4.2,1, 'led1', 'led_C1', 'led_C104', [0, 0, 1, -1, 62.5, 124], 'red');
@@ -501,8 +550,32 @@ function led2() {
     led.addEndPoint('blue',4.2,1, 'led1', 'led_A1', 'led_A103', [0, 0, 1, -1, 50, 110.5], 'red');
     led.addEndPoint('blue',4.2,1, 'led1', 'led_A1', 'led_A104', [0, 0, 1, -1, 50, 124], 'red');
    led.addEndPoint('blue',4.2,1, 'led1', 'led_A1', 'led_A105', [0, 0, 1, -1, 50, 137.5], 'red');
+
+   disabledButton();
 }
 
+function disabledButton()
+{
+
+   if(!reset1_button.disabled)
+   {
+    reset1_button.disabled=true;
+    reset1_button.style.cursor="not-allowed"
+   }
+        
+    
+  if(window.getComputedStyle(document.getElementById('board')).visibility === "visible" && window.getComputedStyle(document.getElementById('led')).visibility === "visible" && 
+  window.getComputedStyle(document.getElementById('ic74513')).visibility === "visible" &&
+   window.getComputedStyle(document.getElementById('ic7404')).visibility === "visible"  && 
+   window.getComputedStyle(document.getElementById('supply')).visibility === "visible" && 
+  window.getComputedStyle(document.getElementById('inputs')).visibility === "visible")
+  {
+  check_button.disabled=false;
+  Second.disabled=true;
+  Second.style.cursor="not-allowed";  
+     
+  }
+}
 
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
@@ -538,13 +611,15 @@ function check1()                     //CHECK IF THE TABLE FILLED IS RIGHT OR NO
   if(h.value=="1"  && g.value=="0"  && f.value=="0"  && e.value=="1"  && d.value=="0" && c.value=="1" && a.value=="0" && b.value=="1" && i.value=="0"
           && j.value=="1" && k.value=="1" && l.value=="1" && m.value=="0" && n.value=="0" && o.value=="0"&& p.value=="1" )
             { 
-                  alert("Right data. You can proceed to simulation.");
-                  document.getElementById("second").disabled=false;
-                  document.getElementById("second").style.cursor="pointer";  
-                     
+                  alert("Right data. Now place the components.");
+                  Second.disabled=false;
+                  Second.style.cursor="pointer";  
+                  document.querySelectorAll('.cell').forEach(elem => {
+                    elem.disabled = true;elem.style.cursor="not-allowed"
+                });
                        
-                         document.getElementById("checkbutton").disabled=false;
-                          
+                         check1_button.disabled=true;
+                         check1_button.style.cursor="not-allowed"
                       //  document.getElementById("resetbutton").disabled=false;
                     }
                                   
@@ -575,7 +650,16 @@ else if(h.value=="1"  && g.value=="0"  && f.value=="0"  && e.value=="1"  && d.va
           {
                   if(confirm("Do you want to reset?")){
          
-        
+                document.getElementById("check1").disabled=false;
+                document.getElementById("second").disabled=true;
+                document.getElementById("second").style.cursor="not-allowed";
+
+                Second.style.cursor="pointer";  
+                  document.querySelectorAll('.cell').forEach(elem => {
+                    elem.disabled = false;elem.style.cursor=""
+                });
+
+
                 document.getElementById("cell1").value='';
                 document.getElementById("cell2").value='';
 
@@ -598,6 +682,9 @@ else if(h.value=="1"  && g.value=="0"  && f.value=="0"  && e.value=="1"  && d.va
                document.getElementById("cell14").value='';
                document.getElementById("cell15").value='';
               document.getElementById("cell16").value='';
+              document.querySelectorAll('.cell').forEach(elem => {
+                elem.disabled = false;elem.style.cursor="pointer"
+            });
          }
 
 }
@@ -924,6 +1011,13 @@ function afterSimulation1()
                document.getElementById("cell14").value='0';
                document.getElementById("cell15").value='0';
               document.getElementById("cell16").value='1';
+
+              document.getElementById('check1').disabled=true;
+              document.getElementById('reset1').disabled=true;
+              document.querySelectorAll('.cell').forEach(elem => {
+                elem.disabled = true;elem.style.cursor="not-allowed"
+            });
+            
 document.getElementById("startbutton").disabled=true;
 
 
@@ -962,6 +1056,7 @@ function resetCircuit() {
    document.location.reload();
  
     isstartedsimulation=false;
+  
   }
 
 }

@@ -113,10 +113,10 @@
 .Button-data {
     position: fixed;
     right: 0px;
-    bottom: 30px;
+    bottom: auto;
     transform: translateX(100%);
     transition: transform 0.4s ease-in-out;
-    overflow: hidden;
+    overflow: scroll;
     z-index:999;
 }
 
@@ -515,6 +515,11 @@ a
 
 */
 
+button:disabled{
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 .bottom {
     position: absolute;
     height: 60px;
@@ -524,14 +529,14 @@ a
 }
 
 .bottom button {
-    margin: 5px 40px 10px 40px;
+    margin: 10px 40px 10px 40px;
     height: 35px;
     width: 200px;
     font-size: 15px;
     border: none;
     font-weight: bold;
     border-radius: 25px;
-    cursor: pointer;
+color:white;
     border-color: black;
   
 }
