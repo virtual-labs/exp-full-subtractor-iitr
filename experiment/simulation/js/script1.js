@@ -194,7 +194,13 @@ function checkCircuit() {
     }
    console.log("###noofedges->"+(g.numberofedges-deletecon));
    
-
+   var edges= (g.numberofedges);
+   console.log('edges:'+edges)
+   if(edges == 0)
+   {
+       alert("No connections present.");   
+       return;
+   }
 
     if(g.isConnected("ic74513_16","VCC")&& g.isConnected("ic74513_1",'GND')){
    
